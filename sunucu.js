@@ -19,7 +19,7 @@ const sunucu = http.createServer((req, res) => {
   if (yol === '/') {
     return gonder(res, 200, 'text/html',
       '<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><title>Ana Sayfa</title></head>' +
-      '<body><h1>BMH231 Web Programlama Ödev 1</h1><a href="/hakkimda">Hakkımda</a></body></html>');
+      '<body><h1>Baslik Dali: Web Programlama Ödev 1</h1><a href="/hakkimda">Hakkımda</a></body></html>');
   }
   if (yol === '/hakkimda') {
     return gonder(res, 200, 'text/html',
