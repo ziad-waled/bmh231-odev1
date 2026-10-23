@@ -16,6 +16,12 @@ const sunucu = http.createServer((req, res) => {
       '<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><title>Ana Sayfa</title></head>' +
       '<body><h1>BMH231 Web Programlama Ödev 1</h1><a href="/hakkimda">Hakkımda</a></body></html>');
   }
+  if (yol === '/hakkimda') {
+    return gonder(res, 200, 'text/html',
+      '<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><title>Hakkımda</title></head>' +
+      '<body><h1>Hakkımda</h1><p>Ben Ziad, Yozgat Bozok Üniversitesi öğrencisiyim.</p>' +
+      '<a href="/">Ana sayfa</a></body></html>');
+  }
   return gonder(res, 404, 'text/plain', 'Sayfa bulunamadı');
 });
 
