@@ -12,6 +12,10 @@ const sunucu = http.createServer((req, res) => {
   console.log(`${req.method} ${req.url}`);
   const yol = new URL(req.url, `http://${req.headers.host || 'localhost'}`).pathname;
 
+  if (req.method !== 'GET') {
+    return gonder(res, 405, 'text/plain', 'Yöntem desteklenmiyor', { Allow: 'GET' });
+  }
+
   if (yol === '/') {
     return gonder(res, 200, 'text/html',
       '<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><title>Ana Sayfa</title></head>' +
