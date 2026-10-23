@@ -1,4 +1,5 @@
 const http = require('http');
+const dayjs = require('dayjs');
 
 const PORT = 3000;
 
@@ -21,6 +22,16 @@ const sunucu = http.createServer((req, res) => {
       '<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><title>Hakkımda</title></head>' +
       '<body><h1>Hakkımda</h1><p>Ben Ziad, Yozgat Bozok Üniversitesi öğrencisiyim.</p>' +
       '<a href="/">Ana sayfa</a></body></html>');
+  }
+  if (yol === '/api/ders') {
+    return gonder(res, 200, 'application/json',
+      JSON.stringify({ kod: 'BMH231', ad: 'Web Programlama', gun: 'Cuma' }));
+  }
+  if (yol === '/api/agep') {
+    const son = dayjs('2026-11-01');
+    const kalan = son.diff(dayjs().startOf('day'), 'day');
+    return gonder(res, 200, 'application/json',
+      JSON.stringify({ sonTeslim: '01.11.2026', kalanGun: kalan }));
   }
   return gonder(res, 404, 'text/plain', 'Sayfa bulunamadı');
 });
